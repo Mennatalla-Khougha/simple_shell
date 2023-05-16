@@ -10,4 +10,6 @@
 #include <sys/wait.h>
 #include <errno.h>
 
+void _exceve(char *ptr, int arg_c, char *argv);
+
 #endif
