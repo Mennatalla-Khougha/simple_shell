@@ -25,5 +25,9 @@ char *_strcat(char *dest, char *src);
 char *_strdup(char *str);
 int _strncmp(const char *s1, const char *s2, size_t n);
 int _atoi(char *s);
+void _command_(char *ptr, char *argv, char *path, int argc, int path_c, int count, char **envp);
+char *input(char **line, size_t *n);
+int token(char *line, char *delim);
+int _exit_(char *line, char *argv, int argc, int count, char *env, int k);
 
 #endif
