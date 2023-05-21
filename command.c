@@ -1,6 +1,7 @@
 #include "main.h"
 
-void _command_(char *ptr, char *argv, char *path, int argc, int path_c, int count, char **envp)
+int _command_(char *ptr, char *argv, char *path, int argc,
+int path_c, int count, char **envp, int *status)
 {
     int i;
 
@@ -9,10 +10,10 @@ void _command_(char *ptr, char *argv, char *path, int argc, int path_c, int coun
         if (access(ptr, X_OK) == 0)
         {
             if (!_env(envp, ptr))
-                _exceve(ptr, argc, ptr);
+                return (_exceve(ptr, argc, ptr, status, envp));
+            return (0);
         }
-        else
-            _printf("%s: %i: %s: not found\n", argv, count, ptr);
+        _printf("%s: %i: %s: not found\n", argv, count, ptr);
     }
     else
     {
@@ -25,37 +26,41 @@ void _command_(char *ptr, char *argv, char *path, int argc, int path_c, int coun
             if (access(buffer, X_OK) == 0) 
             {
                 if (!_env(envp, ptr))
-                    _exceve(ptr, argc, buffer);
-                break;
+                    return (_exceve(ptr, argc, buffer, status, envp));
+                return (0);
             }
             path += _strlen(path) + 1;
         }
-        if(i == path_c){
-            _printf("%s: %i: %s: not found\n", argv, count, ptr);
-        }
+        _printf("%s: %i: %s: not found\n", argv, count, ptr);
     }
+    return (127);
 }
 
-char *input(char **line, size_t *n)
+int input(char **line, size_t *n)
 {
     ssize_t read;
 
-    read = getline(line, n, stdin);
+    read = _getline(line, n, 0);
         if (read == -1)
-            return (0);
+            exit(0);
         if ((*line)[read - 1] == '\n')
             (*line)[read - 1] = '\0';
-    return (*line);
+        if ((*line)[read - 1] == ';')
+        {
+            (*line)[read - 1] = '\0';
+            return (0);
+        }
+        return (1);
 }
 
 int token(char *line, char *delim)
 {
     int argc = 0;
-    char *_token = strtok(line, delim);
+    char *_token = _strtok(line, delim);
 
     while (_token)
     {
-        _token = strtok(NULL, delim);
+        _token = _strtok(NULL, delim);
         argc++;
     }
     return(argc);

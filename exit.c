@@ -1,21 +1,20 @@
 #include "main.h"
 
-int _exit_(char *line, char *argv, int argc, int count, char *env, int k)
+int _exit_(char *ptr, char *line, char *argv, int argc, int count)
 {
-    int n;
+    int k = 0;
 
-    if(!strcmp(line, "exit")){
+    if(!strcmp(ptr, "exit")){
         if(argc > 1){
-            n = _strlen(line) + 1;
-            k = _atoi(line + n);
+            ptr += _strlen(ptr) + 1;
+            k = _atoi(ptr);
         }
         if(k != -1){
-            free(env);
             free(line);
             exit(k);
         }
         else
-            _printf("%s: %i: exit: Illegal number: %s\n", argv, count, line + n);
+            _printf("%s: %i: exit: Illegal number: %s\n", argv, count, ptr);
         return (1);
     }
     return (0);
