@@ -37,5 +37,7 @@ int _env(char **env, char *ptr);
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 void _echo(char **ptr, int val, int pid, char **envp);
 int rev_cmp(char *s1, char *s2);
+void tostring(char *str, int num);
+char *_get_env(char **envp, char *env);
 
 #endif
