@@ -29,5 +29,8 @@ void _command_(char *ptr, char *argv, char *path, int argc, int path_c, int coun
 char *input(char **line, size_t *n);
 int token(char *line, char *delim);
 int _exit_(char *line, char *argv, int argc, int count, char *env, int k);
+char *space(char **line);
+char *_strtok(char *s, const char *delim);
+ssize_t _getline(char **line, size_t *n, int stream);
 
 #endif
