@@ -32,5 +32,7 @@ int _exit_(char *line, char *argv, int argc, int count, char *env, int k);
 char *space(char **line);
 char *_strtok(char *s, const char *delim);
 ssize_t _getline(char **line, size_t *n, int stream);
+int _env(char **env, char *ptr);
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 
 #endif
