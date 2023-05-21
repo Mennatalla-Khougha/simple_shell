@@ -1,2 +1,2 @@
-0x16. C - Simple Shell.
+ - Simple Shell.
 _We create our own shell_
