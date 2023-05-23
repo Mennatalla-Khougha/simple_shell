@@ -176,7 +176,7 @@ while (1)
 {
 	args.count++;
 	if (isatty(STDIN_FILENO) && arrow && !args.file)
-		write(1, "=> ", 3);
+		write(1, "shell$ ", 7);
 	arrow = input(&args);
 	handle_input(&args);
 	args.n_token = token(args.line, " ");
