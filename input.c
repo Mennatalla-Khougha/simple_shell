@@ -73,6 +73,8 @@ ssize_t _getline(para *args)
 /**
  * handle_input - determine if line contain $ or # and act accordingly.
  * @args: parameter of type para..
+ *
+ * Return: 1 if the string is empty
 */
 int handle_input(para *args)
 {
