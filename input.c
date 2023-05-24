@@ -13,7 +13,7 @@ int input(para *args, int arrow)
 	read = _getline(args);
 	if (read == -1)
 	{
-		if (arrow)
+		if (isatty(STDIN_FILENO) && arrow && !args->file)
 			write(1, "\n", 1);
 		close(args->file);
 		free(args->line);
