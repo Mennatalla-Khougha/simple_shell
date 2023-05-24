@@ -182,7 +182,7 @@ while (1)
 	args.count++;
 	if (isatty(STDIN_FILENO) && arrow && !args.file)
 		write(1, "=> ", 3);
-	arrow = input(&args, arrow);
+	arrow = input(&args);
 	if (handle_input(&args))
 		continue;
 	args.n_token = token(args.line, " ");
