@@ -105,14 +105,14 @@ if (!_strcmp(args->line, "exit"))
 	}
 	if (args->status != -1)
 	{
-        	if (args->line)
-                	free(args->line);
-        	if (args->path)
-                	free(args->path);
-        	if (args->pwd)
-                	free(*(args->pwd));
-        	if (args->old_pwd)
-                	free(args->old_pwd);
+		if (args->line)
+			free(args->line);
+		if (args->path)
+			free(args->path);
+		if (args->pwd)
+			free(*(args->pwd));
+		if (args->old_pwd)
+			free(args->old_pwd);
 		exit(args->status);
 	}
 	_printf("%s: %i: exit: Illegal number: %s\n",

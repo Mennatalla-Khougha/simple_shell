@@ -55,9 +55,9 @@ ssize_t _getline(para *args)
 	while ((read_line = read(args->file, buffer + i, 1)) > 0)
 	{
 		i++;
+		buffer = handle_realloc(args, buffer, &buffer_size, 8, i);
 		if (buffer[i - 1] == '\n' || buffer[i - 1] == ';')
 			break;
-		buffer = handle_realloc(args, buffer, &buffer_size, 8, i);
 	}
 	if (read_line < 0 || (!read_line && !i))
 	{
