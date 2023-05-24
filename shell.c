@@ -54,7 +54,7 @@ int _command_(para *args)
 int _exceve(para *args, char *buff)
 {
 	int i;
-	char **arg_v, *env[] = {NULL}, *line = args->line;
+	char **arg_v, *line = args->line;
 	pid_t id = fork();
 
 	if (!id)
@@ -79,7 +79,7 @@ int _exceve(para *args, char *buff)
 			}
 			arg_v[i] = NULL;
 		}
-		execve(buff, arg_v, env);
+		execve(buff, arg_v, NULL);
 		free(arg_v);
 		exit(args->status);
 	}

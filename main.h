@@ -42,6 +42,7 @@ typedef struct para
 	int pid;
 } para;
 
+void handle_dots(char **line, para *args);
 int _printf(const char *format, ...);
 int p_char(char c);
 int p_string(char *s);
