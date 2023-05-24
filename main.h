@@ -51,7 +51,7 @@ int num_len(int n);
 int specifier(char c, va_list args);
 int _strlen(char *s);
 char *_strcat(char *dest, char *src);
-char *_strdup(char *str);
+char *_strdup(para *args, char *str);
 int _strncmp(const char *s1, const char *s2, size_t n);
 char *_strtok(char *str, const char *delim);
 char *_strchr(char *s, char c);
@@ -79,7 +79,7 @@ int cd(para *args);
 void change_pwd(para *args);
 void free_exit(para *args);
 char *_malloc(para *args, int size);
-char *malloc2(char *line, para *args, int size);
+char *malloc2(char *line ,para *args, int size);
 
 #endif
 

@@ -33,7 +33,7 @@ int cd(para *args)
 		else
 		{
 			free(args->old_pwd);
-			args->old_pwd = _strdup(&((*(args->pwd))[4]));
+			args->old_pwd = _strdup(args, &((*(args->pwd))[4]));
 			if (!args->old_pwd)
 				free_exit(args);
 			change_pwd(args);
@@ -75,7 +75,7 @@ char **get_PWD(para *args)
 	{
 		if (_strncmp(args->envp[i], "PWD", 3) == 0)
 		{
-			pwd = _strdup(args->envp[i]);
+			pwd = _strdup(args, args->envp[i]);
 			args->envp[i] = pwd;
 			return (&(args->envp[i]));
 		}

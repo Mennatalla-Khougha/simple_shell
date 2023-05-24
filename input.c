@@ -18,10 +18,14 @@ int input(para *args, int arrow, int *semi)
 		if (isatty(STDIN_FILENO) && arrow && !args->file)
 			write(1, "\n", 1);
 		close(args->file);
-		free(args->line);
-		free(args->path);
-		free(*(args->pwd));
-		free(args->old_pwd);
+		if (args->line)
+			free(args->line);
+		if (args->path)
+			free(args->path);
+		if (args->pwd)
+			free(*(args->pwd));
+		if (args->old_pwd)
+			free(args->old_pwd);
 		exit(args->status);
 	}
 	if (*semi)

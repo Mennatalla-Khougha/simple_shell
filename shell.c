@@ -157,16 +157,18 @@ int main(int argc, char **argv, char **envp)
 
 	args.line = NULL;
 	args.envp = envp;
-	args.path = _strdup(_get_env(envp, "PATH", 4));
+	args.path = NULL;
+	args.pwd = NULL;
+	args.old_pwd = NULL;
+	args.path = _strdup(&args, _get_env(envp, "PATH", 4));
 	args.pwd = get_PWD(&args);
-	args.old_pwd = _strdup(&((*args.pwd)[4]));
+	if (args.pwd)
+		args.old_pwd = _strdup(&args, &((*args.pwd)[4]));
 	args.shell_name = argv[0];
 	args.count = 0;
 	args.status = 0;
 	args.file = 0;
 	args.pid = (int)getpid();
-	if (!args.path || !args.pwd || !args.old_pwd)
-		free_exit(&args);
 	args.n_path = token(args.path, ":");
 	if (argc > 1)
 	{
