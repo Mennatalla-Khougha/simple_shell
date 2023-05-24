@@ -8,7 +8,7 @@
 */
 char *_strtok(char *str, const char *delim)
 {
-	static char *last;
+	static char *last = NULL;
 	char *token;
 
 	if (str != NULL)
@@ -42,12 +42,12 @@ char *_strtok(char *str, const char *delim)
 char *_strdup(char *str)
 {
 	char *copy;
-	int i;
+	int i, len = _strlen(str);
 
-	copy = malloc(_strlen(str) + 1);
+	copy = malloc(len + 1);
 	if (!copy)
 		return (NULL);
-	for (i = 0; i < _strlen(str); i++)
+	for (i = 0; i < len; i++)
 	{
 		copy[i] = str[i];
 	}

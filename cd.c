@@ -69,7 +69,7 @@ void change_pwd(para *args)
 char **get_PWD(para *args)
 {
 	int i;
-	char *pwd;
+	char *pwd = NULL;
 
 	for (i = 0; args->envp[i] != NULL; i++)
 	{
