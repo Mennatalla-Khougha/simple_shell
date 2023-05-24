@@ -6,13 +6,15 @@
 * @args: parameter of type para
 * Return: 0, 1
 */
-int input(para *args)
+int input(para *args, int arrow)
 {
 	ssize_t read;
 
 	read = _getline(args);
 	if (read == -1)
 	{
+		if (arrow)
+			write(1, "\n", 1);
 		close(args->file);
 		free(args->line);
 		free(args->path);

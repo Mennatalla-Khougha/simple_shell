@@ -62,7 +62,7 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size);
 int _atoi(char *s);
 int _exit_(para *args);
 int _command_(para *args);
-int input(para *args);
+int input(para *args, int arrow);
 int token(char *line, char *delim);
 int rev_cmp(char *s1, char *s2);
 int _env(para *args);
