@@ -153,7 +153,7 @@ int token(char *line, char *delim)
 int main(int argc, char **argv, char **envp)
 {
 	para args;
-	int  arrow = 1;
+	int  arrow = 1, semi = 0;
 
 	args.line = NULL;
 	args.envp = envp;
@@ -182,7 +182,7 @@ while (1)
 	args.count++;
 	if (isatty(STDIN_FILENO) && arrow && !args.file)
 		write(1, "=> ", 3);
-	arrow = input(&args, arrow);
+	arrow = input(&args, arrow, &semi);
 	if (handle_input(&args))
 		continue;
 	args.n_token = token(args.line, " ");

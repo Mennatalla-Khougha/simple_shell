@@ -7,7 +7,7 @@
 * @arrow: 1 if stdin.
 * Return: 0, 1
 */
-int input(para *args, int arrow)
+int input(para *args, int arrow, int *semi)
 {
 	ssize_t read;
 
@@ -23,6 +23,8 @@ int input(para *args, int arrow)
 		free(args->old_pwd);
 		exit(args->status);
 	}
+	if (*semi)
+		args->count--;
 	if (args->line[read - 1] == '\n')
 	{
 		args->line[read - 1] = '\0';
@@ -30,8 +32,10 @@ int input(para *args, int arrow)
 	if (args->line[read - 1] == ';')
 	{
 		args->line[read - 1] = '\0';
+		*semi = 1;
 		return (0);
 	}
+	*semi = 0;
 	return (1);
 }
 
