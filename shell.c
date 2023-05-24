@@ -41,6 +41,7 @@ int _command_(para *args)
 		}
 	_printf("%s: %i: %s: not found\n", args->shell_name, args->count, args->line);
 	}
+	args->status = 127;
 	return (127);
 }
 

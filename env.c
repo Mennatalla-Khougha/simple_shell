@@ -97,6 +97,7 @@ int _env(para *args)
 			write(1, args->envp[i], _strlen(args->envp[i]));
 			write(1, "\n", 1);
 		}
+		args->status = 0;
 		return (1);
 	}
 	return (0);
