@@ -182,7 +182,8 @@ while (1)
 	if (isatty(STDIN_FILENO) && arrow && !args.file)
 		write(1, "=> ", 3);
 	arrow = input(&args);
-	handle_input(&args);
+	if (handle_input(&args))
+		continue;
 	args.n_token = token(args.line, " ");
 	if (_command_(&args) == 255)
 		free_exit(&args);

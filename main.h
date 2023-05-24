@@ -69,7 +69,7 @@ int _env(para *args);
 ssize_t _getline(para *args);
 void space(char **line, para *args);
 char *_get_env(char **envp, char *env, int len);
-void handle_input(para *args);
+int handle_input(para *args);
 void handle_dollar(char *buffer, char **dollar, para *args);
 char *handle_realloc(para *agrs, char *buffer, int *buffer_size, int extra,
 int max);

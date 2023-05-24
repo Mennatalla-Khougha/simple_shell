@@ -74,7 +74,7 @@ ssize_t _getline(para *args)
  * handle_input - determine if line contain $ or # and act accordingly.
  * @args: parameter of type para..
 */
-void handle_input(para *args)
+int handle_input(para *args)
 {
 char *buffer, *dollar, *start, *hash = _strchr(args->line, '#');
 int buffer_size = 1024;
@@ -82,8 +82,6 @@ int buffer_size = 1024;
 if (hash && ((hash != args->line && *(hash - 1) == ' ') || hash == args->line))
 	*hash = '\0';
 buffer = _malloc(args, buffer_size);
-if (buffer == NULL)
-	return;
 dollar = _strchr(args->line, '$');
 start = args->line;
 buffer[0] = '\0';
@@ -102,6 +100,7 @@ _strcat(buffer, start);
 space(&buffer, args);
 free(args->line);
 args->line = buffer;
+return (buffer[0] == '\0');
 }
 
 /**
@@ -153,7 +152,7 @@ void space(char **line, para *args)
 
 	if (buffer == NULL)
 	{
-		free(line);
+		free(*line);
 		free_exit(args);
 	}
 	while ((*line)[i] && (*line)[i] == ' ')
