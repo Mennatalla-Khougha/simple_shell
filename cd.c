@@ -93,7 +93,7 @@ void free_exit(para *args)
 		free(args->line);
 	if (args->path)
 		free(args->path);
-	if (*(args->pwd))
+	if (args->pwd)
 		free(*(args->pwd));
 	if (args->old_pwd)
 		free(args->old_pwd);
