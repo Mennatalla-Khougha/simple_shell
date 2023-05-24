@@ -108,7 +108,7 @@ buffer = handle_realloc(args, buffer, &buffer_size,
 128, _strlen(buffer) + _strlen(start));
 _strcat(buffer, start);
 space(&buffer, args);
-/* handle_dots(&buffer, args); */
+handle_dots(&buffer, args);
 free(args->line);
 args->line = buffer;
 return (buffer[0] == '\0');

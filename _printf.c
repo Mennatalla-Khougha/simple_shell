@@ -43,16 +43,11 @@ void handle_dots(char **line, para *args)
 
 	if (line_c[0] == '.')
 	{
-		buffer = malloc(512);
-		if (buffer == NULL)
-		{
-			free(*line);
-			free_exit(args);
-		}
+		buffer = malloc2(*line, args, 512);
 		buffer[0] = '\0';
 		_strcat(buffer, &((*(args->pwd))[4]));
 		len = _strlen(buffer);
-		while (line_c[i])
+		while (line_c[i] && line_c[i] != ' ')
 		{
 			if (line_c[i] == '.' && line_c[i + 1] == '.')
 			{
@@ -64,16 +59,39 @@ void handle_dots(char **line, para *args)
 			else if (line_c[i] != '/' && line_c[i] != '.')
 			{
 				buffer[len++] = '/';
-				while (line_c[i] && line_c[i] != '/')
+				while (line_c[i] && line_c[i] != '/' && line_c[i] != ' ')
 					buffer[len++] = line_c[i++];
+				i--;
 			}
 			i++;
 		}
 		buffer[len] = '\0';
 		if (access(buffer, X_OK) == 0)
 		{
+			_strcat(buffer, &line_c[i]);
 			free(*line);
 			*line = buffer;
 		}
 	}
+}
+
+/**
+ * malloc2 - handle malloc2
+ * @line: input
+ * @args: parameter of type para
+ * @size: the size
+ *
+ * Return: the buffer
+ */
+
+char *malloc2(char *line, para *args, int size)
+{
+	char *buffer = malloc(size);
+
+	if (!buffer)
+	{
+		free(line);
+		free_exit(args);
+	}
+	return (buffer);
 }
