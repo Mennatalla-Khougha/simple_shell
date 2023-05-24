@@ -46,7 +46,7 @@ ssize_t _getline(para *args)
 
 	if (&(args->line) == NULL)
 		return (-1);
-	buffer = _malloc(args, buffer_size);
+	buffer = _malloc(args, buffer_size + 1);
 	if (args->line)
 	{
 		free(args->line);
