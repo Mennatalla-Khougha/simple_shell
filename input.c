@@ -174,7 +174,7 @@ void space(char **line, para *args)
 			j++;
 		}
 	}
-	if (buffer[j - 1] == ' ')
+	if (j && buffer[j - 1] == ' ')
 		j--;
 	buffer[j] = '\0';
 	free(*line);
