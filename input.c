@@ -4,7 +4,8 @@
 /**
 * input - determine if we start new line in the shell with an arrow.
 * @args: parameter of type para
-* @arrow: 1 if stdin.
+* @arrow: 1 if stdin
+* @semi:  0 or 1
 * Return: 0, 1
 */
 int input(para *args, int arrow, int *semi)
