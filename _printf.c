@@ -95,3 +95,22 @@ char *malloc2(char *line, para *args, int size)
 	}
 	return (buffer);
 }
+
+/**
+* token - function to return the splitted number of token
+* @line: the string to be splitted
+* @delim: the delim used to split the string
+* Return:number of token splitted
+*/
+int token(char *line, char *delim)
+{
+	int n_token = 0;
+	char *str_token = _strtok(line, delim);
+
+	while (str_token)
+	{
+		str_token = _strtok(NULL, delim);
+		n_token++;
+	}
+	return (n_token);
+}
