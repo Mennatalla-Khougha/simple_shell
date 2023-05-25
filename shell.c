@@ -1,4 +1,4 @@
- #include "main.h"
+#include "main.h"
 
 /**
  * _command_ - handle the path of the command passed.
@@ -24,6 +24,8 @@ int _command_(para *args)
 	}
 	else
 	{
+		if (!_strcmp(args->line, "env") && _env(args))
+			return (0);
 		for (i = 0; i < args->n_path; i++)
 		{
 			char buffer[500] = "";
@@ -32,11 +34,7 @@ int _command_(para *args)
 			_strcat(buffer, "/");
 			_strcat(buffer, args->line);
 			if (access(buffer, X_OK) == 0)
-			{
-				if (!_env(args))
-					return (_exceve(args, buffer));
-				return (0);
-			}
+				return (_exceve(args, buffer));
 			path += _strlen(path) + 1;
 		}
 	_printf("%s: %i: %s: not found\n", args->shell_name, args->count, args->line);
