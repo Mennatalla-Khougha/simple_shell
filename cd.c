@@ -27,7 +27,7 @@ int cd(para *args)
 		}
 		if (chdir(dest) == -1)
 		{
-		_printf("%s: %i: cd: an't cd to %s\n", args->shell_name, args->count, dest);
+		_printf("%s: %i: cd: can't cd to %s\n", args->shell_name, args->count, dest);
 		args->status = 2;
 		}
 		else
