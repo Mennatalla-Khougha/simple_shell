@@ -72,6 +72,8 @@ void handle_dots(char **line, para *args)
 			free(*line);
 			*line = buffer;
 		}
+		else
+			free(buffer);
 	}
 }
 
