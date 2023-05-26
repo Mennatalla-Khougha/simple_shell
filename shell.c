@@ -154,8 +154,7 @@ int main(int argc, char **argv, char **envp)
 	if (args.pwd)
 		args.old_pwd = _strdup(&args, &((*args.pwd)[4]));
 	args.shell_name = argv[0];
-	args.count = 0, args.status = 0;
-	args.file = 0;
+	args.count = 0, args.status = 0, args.file = 0;
 	args.pid = (int)getpid();
 	args.n_path = token(args.path, ":");
 	if (argc > 1)
@@ -164,6 +163,7 @@ int main(int argc, char **argv, char **envp)
 		if (args.file == -1)
 		{
 			_printf("%s: 0: cannot open %s: No such file\n", argv[0], argv[1]);
+			free_exit(&args);
 			exit(2);
 		}
 	}

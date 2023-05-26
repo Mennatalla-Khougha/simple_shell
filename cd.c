@@ -97,7 +97,7 @@ void free_exit(para *args)
 		free(*(args->pwd));
 	if (args->old_pwd)
 		free(args->old_pwd);
-	exit(255);
+	exit(2);
 }
 
 /**
